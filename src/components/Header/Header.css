@@ -1,0 +1,32 @@
+.header_container {
+    width: 100vw;
+    height: 30vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    padding-left: 2vw;
+    background-color: #2E68FF;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header_button {
+    width: 11.88vw;
+    height: 3.65vw;
+    background-color: #fff;
+    color: #2E68FF;
+    border-radius: 15px;
+    font-size: 1.67vw;
+    text-align: center;
+    border: 1px solid #2E68FF;
+    transition: all .3s linear;
+}
+.header_button:hover {
+    color: #fff;
+    background-color: #2E68FF;
+    border: 1px solid #fff;
+}
+.header_date {
+    font-size: 2.19vw;
+}

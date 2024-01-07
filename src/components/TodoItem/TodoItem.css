@@ -1,0 +1,14 @@
+.todoItem {
+    padding: 1vw;
+    cursor: pointer;
+    width: 80%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+}
+.todoItem_text {
+    display: flex;
+}
+.todoItem_text b {
+    margin-right: 1vw;
+}
