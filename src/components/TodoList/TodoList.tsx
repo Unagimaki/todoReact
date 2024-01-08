@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTypesSelector } from "../../hooks/useTypesSelector";
 import TodoItem from "../TodoItem/TodoItem";
 import { useDispatch } from "react-redux";
 import { deleteTodoCreator, toggleTodoCreator } from "../../store/actionCreator/todos";
 import './TodoList.css'
+import { filterTypes } from "../../types/filter";
 
 const TodoList: React.FC = () => {
-    const {todos} = useTypesSelector(state => state.todos)
     const dispatch = useDispatch()
+    const {todos} = useTypesSelector(state => state.todos)
+    const filter = useTypesSelector(state => state.filter)
+    const [todoList, setTodoList] = useState(todos)
+
+    useEffect(() => {
+        resultTodos()
+    }, [todos, filter])
+
+    const resultTodos = () => {
+        filter === filterTypes.SHOW_ACTIVE ? setTodoList(todos.filter(todo => !todo.completed)) :
+        filter === filterTypes.SHOW_COMPLETED ? setTodoList(todos.filter(todo => todo.completed)) :
+        setTodoList(todos)       
+    }
 
     const toggleTodo = (id: Number) => {
         dispatch(toggleTodoCreator(id))
@@ -19,14 +32,14 @@ const TodoList: React.FC = () => {
     return(
         <div className="todoList_container">
             {
-                todos.length ? 
-                todos.map((todo, index) => {
+                todoList.length ? 
+                todoList.map((todo, index) => {
                     return <TodoItem
                         deleteTodo={deleteTodo}
                         toggleTodo={toggleTodo}
                         index={index+1}
                         todo={todo}
-                        key={todo.id}
+                        key={index}
                     />
                 })
                 : 'Empty list'

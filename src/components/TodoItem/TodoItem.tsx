@@ -1,4 +1,3 @@
-import React from "react";
 import { ITodo } from "../../types/todo";
 import './TodoItem.css'
 

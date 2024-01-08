@@ -24,6 +24,6 @@ export interface ITodo {
 }
 
 export interface TodosState {
-    todos: any[];
+    todos: ITodo[];
     visibilityFilter: String
 }
